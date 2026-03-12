@@ -49,5 +49,17 @@ This visualization provides a high-level overview of the network and highlights 
 The resulting graph illustrates the global connectivity structure of submarine fiber optic infrastructure.
 
 ## Business Questions & Graph Analysis
-
 The following analytical queries explore key aspects of the submarine cable network.
+
+1. Countries with the Highest Number of Landing Stations
+Landing stations serve as critical infrastructure points where submarine cables connect to terrestrial networks.
+```cypher
+MATCH (ls:Landing_stations)-[:LOCATED_IN]->(c:Countries)
+RETURN c.country_name AS country,
+       count(ls) AS total_landing_stations
+ORDER BY total_landing_stations DESC
+LIMIT 10
+```
+Countries with the highest number of landing stations often act as major international connectivity hubs.
+
+2. Companies Owning the Largest Number of Submarine Cables
