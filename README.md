@@ -60,7 +60,7 @@ The following analytical queries explore key aspects of the submarine cable netw
     ORDER BY total_landing_stations DESC
     LIMIT 10
     ```
-Countries with the highest number of landing stations often act as major international connectivity hubs.
+    Countries with the highest number of landing stations often act as major international connectivity hubs.
 
 2. Companies Owning the Largest Number of Submarine Cables
    This analysis identifies the companies that play the most significant role in the global submarine cable ecosystem.
@@ -71,8 +71,8 @@ Countries with the highest number of landing stations often act as major interna
     ORDER BY total_cables DESC
     LIMIT 10
     ```
-Major telecommunications providers and technology companies typically dominate submarine cable ownership.
-
+    Major telecommunications providers and technology companies typically dominate submarine cable ownership.
+  
 3. Longest Submarine Cables in the Network
    Understanding the longest cables provides insight into the scale of global internet infrastructure.
     ```
@@ -85,4 +85,48 @@ Major telecommunications providers and technology companies typically dominate s
     Many of these cables span thousands of kilometers and connect multiple continents.
 
 4. Countries Connected by Each Cable
-   
+   Submarine cables often connect multiple countries through a series of landing stations.
+   ```
+   MATCH (c:Cables)-[:LANDS_AT]->(ls:Landing_stations)-[:LOCATED_IN]->(country:Countries)
+   RETURN c.cable_name AS cable,
+     collect(DISTINCT country.country_name) AS connected_countries
+   LIMIT 20
+   ```
+   This query highlights how individual cables contribute to multi-country connectivity networks.
+
+5. Cables Running Through Specific Oceans
+   The following query identifies cables that pass through the Pacific Ocean.
+   ```
+   MATCH (c:Cables)-[:RUNS_THROUGH]->(o:Oceans)
+   WHERE o.ocean_name = "Pacific Ocean"
+   RETURN c.cable_name
+   ```
+   The Pacific Ocean hosts a large number of submarine cables due to the high volume of data exchange between Asia and North America.
+
+6. Submarine Cables Landing in Indonesia
+   This query identifies cables that connect to Indonesia through landing stations.
+   ```
+   MATCH (c:Cables)-[:LANDS_AT]->(ls:Landing_stations)-[:LOCATED_IN]->(country:Countries)
+   WHERE country.country_name = "Indonesia"
+   RETURN DISTINCT c.cable_name
+   ```
+   Indonesia, as a geographically distributed archipelago, relies heavily on submarine cables for international internet connectivity.
+
+## Key Insights
+Several important insights can be derived from this graph analysis:
+- The global internet infrastructure is supported by a highly interconnected submarine cable network.
+- Certain countries act as major connectivity hubs due to the concentration of landing stations.
+- Large telecommunications and technology companies play a significant role in building and maintaining submarine cable infrastructure.
+- Many submarine cables connect multiple countries simultaneously, forming complex global communication routes.
+
+## Technologies Used
+- Neo4j Graph Database
+- Cypher Query Language
+- Python (Neo4j Driver)
+- CSV Dataset
+
+## Project Motivation
+
+This project demonstrates how graph databases can be used to model and analyze complex infrastructure networks. By representing submarine cable systems as a graph, it becomes easier to explore connectivity patterns, infrastructure ownership, and global communication pathways.
+
+Graph databases provide powerful tools for analyzing network-based data, making them particularly suitable for applications such as telecommunications infrastructure, transportation systems, and social networks.
