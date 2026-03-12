@@ -15,7 +15,7 @@ The objective of this project is to explore the structure of the global submarin
 
 The dataset represents the global submarine fiber optic cable infrastructure using several core entities.
 
-Node Types
+### Node Types
 | Node Label           | Description                                                               |
 | -------------------- | ------------------------------------------------------------------------- |
 | **Cables**           | Submarine fiber optic cables connecting different regions                 |
@@ -24,3 +24,16 @@ Node Types
 | **Landing_stations** | Physical landing points where cables connect to land-based infrastructure |
 | **Oceans**           | Oceans through which submarine cables are routed                          |
 
+### Relationship Types
+| Relationship     | Description                                        |
+| ---------------- | -------------------------------------------------- |
+| **OWNS**         | A company owns or operates a submarine cable       |
+| **LANDS_AT**     | A cable connects to a landing station              |
+| **LOCATED_IN**   | A landing station is located in a specific country |
+| **RUNS_THROUGH** | A cable passes through a particular ocean          |
+This graph structure enables efficient exploration of network connectivity, infrastructure ownership, and geographical distribution.
+
+## Graph Data Model
+The overall schema of the graph database can be visualized using the following Cypher query:
+CALL db.schema.visualization()
+This schema illustrates how submarine cables connect landing stations, which in turn link different countries across oceans. Modeling the data as a graph highlights the interconnected nature of global internet infrastructure.
