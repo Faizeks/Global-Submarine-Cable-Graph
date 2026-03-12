@@ -33,7 +33,8 @@ The dataset represents the global submarine fiber optic cable infrastructure usi
 | **RUNS_THROUGH** | A cable passes through a particular ocean          |
 This graph structure enables efficient exploration of network connectivity, infrastructure ownership, and geographical distribution.
 
-## Graph Data Model
-The overall schema of the graph database can be visualized using the following Cypher query:
-CALL db.schema.visualization()
-This schema illustrates how submarine cables connect landing stations, which in turn link different countries across oceans. Modeling the data as a graph highlights the interconnected nature of global internet infrastructure.
+## Full Network Visualization
+The following query visualizes the relationships between all nodes in the graph.
+MATCH (n)-[r]->(m)
+RETURN n,r,m
+LIMIT 500
