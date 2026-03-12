@@ -52,14 +52,37 @@ The resulting graph illustrates the global connectivity structure of submarine f
 The following analytical queries explore key aspects of the submarine cable network.
 
 1. Countries with the Highest Number of Landing Stations
-Landing stations serve as critical infrastructure points where submarine cables connect to terrestrial networks.
-```cypher
-MATCH (ls:Landing_stations)-[:LOCATED_IN]->(c:Countries)
-RETURN c.country_name AS country,
-       count(ls) AS total_landing_stations
-ORDER BY total_landing_stations DESC
-LIMIT 10
-```
+   Landing stations serve as critical infrastructure points where submarine cables connect to terrestrial networks.
+    ```cypher
+    MATCH (ls:Landing_stations)-[:LOCATED_IN]->(c:Countries)
+    RETURN c.country_name AS country,
+           count(ls) AS total_landing_stations
+    ORDER BY total_landing_stations DESC
+    LIMIT 10
+    ```
 Countries with the highest number of landing stations often act as major international connectivity hubs.
 
 2. Companies Owning the Largest Number of Submarine Cables
+   This analysis identifies the companies that play the most significant role in the global submarine cable ecosystem.
+    ```
+    MATCH (comp:Companies)-[:OWNS]->(c:Cables)
+    RETURN comp.company_name AS company,
+           count(c) AS total_cables
+    ORDER BY total_cables DESC
+    LIMIT 10
+    ```
+Major telecommunications providers and technology companies typically dominate submarine cable ownership.
+
+3. Longest Submarine Cables in the Network
+   Understanding the longest cables provides insight into the scale of global internet infrastructure.
+    ```
+    MATCH (c:Cables)
+    RETURN c.cable_name AS cable,
+           c.length_km AS length_km
+    ORDER BY length_km DESC
+    LIMIT 10
+    ```
+    Many of these cables span thousands of kilometers and connect multiple continents.
+
+4. Countries Connected by Each Cable
+   
