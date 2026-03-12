@@ -40,3 +40,14 @@ MATCH (n)-[r]->(m)
 RETURN n,r,m
 LIMIT 500
 ```
+This visualization provides a high-level overview of the network and highlights the relationships between:
+- Companies and cables
+- Cables and landing stations
+- Landing stations and countries
+- Cables and oceans
+  
+The resulting graph illustrates the global connectivity structure of submarine fiber optic infrastructure.
+
+## Business Questions & Graph Analysis
+
+The following analytical queries explore key aspects of the submarine cable network.
