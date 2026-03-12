@@ -35,6 +35,8 @@ This graph structure enables efficient exploration of network connectivity, infr
 
 ## Full Network Visualization
 The following query visualizes the relationships between all nodes in the graph.
+```cypher
 MATCH (n)-[r]->(m)
 RETURN n,r,m
 LIMIT 500
+```
