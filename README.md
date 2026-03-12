@@ -10,3 +10,15 @@ The objective of this project is to explore the structure of the global submarin
 - Which companies own the largest number of submarine cables?
 - What are the longest submarine cables in the network?
 - How do cables connect multiple countries through landing stations?
+
+## Dataset Description
+
+The dataset represents the global submarine fiber optic cable infrastructure using several core entities.
+
+Node Types
+Node Label	Description
+Cables	Submarine fiber optic cables connecting different regions
+Companies	Companies that own or operate submarine cables
+Countries	Countries where landing stations are located
+Landing_stations	Physical landing points where cables connect to land-based infrastructure
+Oceans	Oceans through which submarine cables are routed
