@@ -1,16 +1,12 @@
 # Global Submarine Fiber Optic Cable Network Analysis (Neo4j)
-Project Overview
+## Project Overview
 
 The global internet infrastructure relies heavily on submarine fiber optic cables, which form the backbone of international data communication. These cables connect continents, countries, and major communication hubs through a complex network of landing stations and ocean routes.
 
 This project models the global submarine cable ecosystem using a Neo4j graph database to analyze relationships between cables, companies, landing stations, countries, and oceans. By representing the dataset as a graph, the relationships between these entities can be explored more intuitively and efficiently compared to traditional relational databases.
 
 The objective of this project is to explore the structure of the global submarine cable network and answer several analytical questions, such as:
-
-Which countries act as major connectivity hubs?
-
-Which companies own the largest number of submarine cables?
-
-What are the longest submarine cables in the network?
-
-How do cables connect multiple countries through landing stations?
+- Which countries act as major connectivity hubs?
+- Which companies own the largest number of submarine cables?
+- What are the longest submarine cables in the network?
+- How do cables connect multiple countries through landing stations?
