@@ -64,7 +64,7 @@ The following analytical queries explore key aspects of the submarine cable netw
 
 2. Companies Owning the Largest Number of Submarine Cables
    This analysis identifies the companies that play the most significant role in the global submarine cable ecosystem.
-    ```
+    ```cypher
     MATCH (comp:Companies)-[:OWNS]->(c:Cables)
     RETURN comp.company_name AS company,
            count(c) AS total_cables
@@ -75,7 +75,7 @@ The following analytical queries explore key aspects of the submarine cable netw
   
 3. Longest Submarine Cables in the Network
    Understanding the longest cables provides insight into the scale of global internet infrastructure.
-    ```
+    ```cypher
     MATCH (c:Cables)
     RETURN c.cable_name AS cable,
            c.length_km AS length_km
@@ -86,7 +86,7 @@ The following analytical queries explore key aspects of the submarine cable netw
 
 4. Countries Connected by Each Cable
    Submarine cables often connect multiple countries through a series of landing stations.
-   ```
+   ```cypher
    MATCH (c:Cables)-[:LANDS_AT]->(ls:Landing_stations)-[:LOCATED_IN]->(country:Countries)
    RETURN c.cable_name AS cable,
      collect(DISTINCT country.country_name) AS connected_countries
@@ -96,7 +96,7 @@ The following analytical queries explore key aspects of the submarine cable netw
 
 5. Cables Running Through Specific Oceans
    The following query identifies cables that pass through the Pacific Ocean.
-   ```
+   ```cypher
    MATCH (c:Cables)-[:RUNS_THROUGH]->(o:Oceans)
    WHERE o.ocean_name = "Pacific Ocean"
    RETURN c.cable_name
@@ -105,7 +105,7 @@ The following analytical queries explore key aspects of the submarine cable netw
 
 6. Submarine Cables Landing in Indonesia
    This query identifies cables that connect to Indonesia through landing stations.
-   ```
+   ```cypher
    MATCH (c:Cables)-[:LANDS_AT]->(ls:Landing_stations)-[:LOCATED_IN]->(country:Countries)
    WHERE country.country_name = "Indonesia"
    RETURN DISTINCT c.cable_name
